@@ -1,0 +1,9 @@
+- snow:
+    dev:
+        url: 'https://<yourservicenow>/api/now/table/incident'
+        uname: <servicenow user>
+        passwd: <password>
+    prd:
+        url: 'https://<yourservicenow>/api/now/table/incident'
+        uname: <servicenow user>
+        passwd: <password>
