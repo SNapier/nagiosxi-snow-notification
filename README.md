@@ -3,10 +3,43 @@
 Python script to allow for NagiosXI to create and resolve monitoing realted incidents within ServiceNow utilizing the API/Incidents Table
 
 ## NagiosXI Configuration
-### Credentials
+1. Create a Contact Group "ServiceNow"
+2. Create a Contact ServiceNow-Dev
+  * Both host and Service commands will be applied to the same user.
+
+### Credentials Required
+1. ServiceNow
+  * ServiceNow Username
+  * Base64 encoded Password <-- plain text won't work
+  Your user will require permissions to close incidents, please talk with your servicenow team to make sure this is setup Properly within your environment.  
+
+2. NagiosXI
+  * User API-Key
+  Your user should have permissions to create acknowledgements and comments via the NagiosXI API.
+
+3. Edit the YAML files to to include the credentials for your environment before uploading to the NagiosXI server. 
+
 ### Upload files to NagosXI
-### NagiosXI Host Command Definition
-### NagiosXI Service Command Definition
+1. As a user with Admin permissions upload the Python and both edited YAML files via the Admin section in the NagiosXI Interface.
+
+### Create NagiosXI Host Command
+1. Name
+  * nagiosxi-snow-notification-host
+2. Command Line
+  * python3 $USER1$/nagiosxi-snow-notification.py --senv "dev" --nenv "dev" --type "host" --etype $HOSTNOTIFICATIONTYPE$ -H "$HOSTNAME$" --hostaddress "$HOSTADDRESS$" --changegroup "$_HOSTGHANGEGROUP$" --downtime $HOSTDOWNTIME$ --hoststateid $HOSTSTATEID$ --hostproblemid $HOSTPROBLEMID$ --hosteventid $HOSTEVENTID$ --lasthosteventid $LASTHOSTEVENTID$ --lasthostproblemid $LASTHOSTPROBLEMID$ --timeinstate $HOSTDURATION$ --lasttimeok $LASTHOSTUP$ --lasttimecritical $LASTHOSTDOWN$ --servicestatetype $HOSTSTATETYPE$ --summary "$HOSTOUTPUT$" --impact $_HOSTIMPACT$ --urgency $_HOSTURGENCY$ --source "HOSTCHECK" --notes $HOSTNOTES$
+3. Command Type
+  * misc command
+
+### Create NagiosXI Service Command
+1. Name
+  * nagiosxi-snow-notification-service
+2. Command Line
+  * 
+3. Command Type
+  * misc command
+  
+### Configure Contact Notification Commands
+
 
 #### Command Input Vairables
 1. REQUIRED
