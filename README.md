@@ -36,7 +36,9 @@ python3 $USER1$/nagiosxi-snow-notification.py --senv "dev" --nenv "dev" --type "
 1. Name
   * nagiosxi-snow-notification-service
 2. Command Line
-  * 
+```bash
+python3 $USER1$/nagiosxi-snow-notification.py --senv "dev" --nenv "dev" --type "service" --etype $SERVICENOTIFICATIONTYPE$ -H "$HOSTNAME$" --hostaddress "$HOSTADDRESS$" --changegroup "$_SERVICECHANGEGROUP$" --downtime $SERVICEDOWNTIME$ --servicestateid $SERVICESTATEID$ --serviceproblemid $SERVICEPROBLEMID$ --serviceeventid $SERVICEEVENTID$ --lastserviceeventid $LASTSERVICEEVENTID$ --lastserviceproblemid $LASTSERVICEPROBLEMID$ --timeinstate $SERVICEDURATION$ --lasttimeok $LASTSERVICEOK$ --lasttimecritical $LASTSERVICECRITICAL$ --servicestatetype $SERVICESTATETYPE$ --summary "$SERVICEOUTPUT$" --impact $_SERVICEIMPACT$ --urgency $_SERVICEURGENCY$ --source "$SERVICEDESCRIPTION$" --notes $SERVICENOTES$
+```
 3. Command Type
   * misc command
 
