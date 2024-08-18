@@ -26,7 +26,9 @@ Python script to allow for NagiosXI to create and resolve monitoing realted inci
 1. Name
   * nagiosxi-snow-notification-host
 2. Command Line
-  * python3 $USER1$/nagiosxi-snow-notification.py --senv "dev" --nenv "dev" --type "host" --etype $HOSTNOTIFICATIONTYPE$ -H "$HOSTNAME$" --hostaddress "$HOSTADDRESS$" --changegroup "$_HOSTGHANGEGROUP$" --downtime $HOSTDOWNTIME$ --hoststateid $HOSTSTATEID$ --hostproblemid $HOSTPROBLEMID$ --hosteventid $HOSTEVENTID$ --lasthosteventid $LASTHOSTEVENTID$ --lasthostproblemid $LASTHOSTPROBLEMID$ --timeinstate $HOSTDURATION$ --lasttimeok $LASTHOSTUP$ --lasttimecritical $LASTHOSTDOWN$ --servicestatetype $HOSTSTATETYPE$ --summary "$HOSTOUTPUT$" --impact $_HOSTIMPACT$ --urgency $_HOSTURGENCY$ --source "HOSTCHECK" --notes $HOSTNOTES$
+```bash
+python3 $USER1$/nagiosxi-snow-notification.py --senv "dev" --nenv "dev" --type "host" --etype $HOSTNOTIFICATIONTYPE$ -H "$HOSTNAME$" --hostaddress "$HOSTADDRESS$" --changegroup "$_HOSTGHANGEGROUP$" --downtime $HOSTDOWNTIME$ --hoststateid $HOSTSTATEID$ --hostproblemid $HOSTPROBLEMID$ --hosteventid $HOSTEVENTID$ --lasthosteventid $LASTHOSTEVENTID$ --lasthostproblemid $LASTHOSTPROBLEMID$ --timeinstate $HOSTDURATION$ --lasttimeok $LASTHOSTUP$ --lasttimecritical $LASTHOSTDOWN$ --servicestatetype $HOSTSTATETYPE$ --summary "$HOSTOUTPUT$" --impact $_HOSTIMPACT$ --urgency $_HOSTURGENCY$ --source "HOSTCHECK" --notes $HOSTNOTES$
+```
 3. Command Type
   * misc command
 
@@ -37,7 +39,7 @@ Python script to allow for NagiosXI to create and resolve monitoing realted inci
   * 
 3. Command Type
   * misc command
-  
+
 ### Configure Contact Notification Commands
 
 
