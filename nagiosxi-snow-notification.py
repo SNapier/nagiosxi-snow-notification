@@ -12,16 +12,16 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 #NAME
 appName = "nagiosxi-snow-notification"
 #VERSION
-appVersion = "0.0.1"
+appVersion = "0.0.3"
 
 #PATHS
 #DEPENDING ON WHERE YOU WANT TO PUT THE REPORTS
 appPath = os.path.dirname(os.path.realpath(__file__))
 
 #PUT THE LOG IN SAME DIR BY DEFAULT
-log_dir = appPath+"\\"
+#log_dir = appPath+"\\"
 #Linux Logging
-#log_dir = "/tmp/"
+log_dir = "/tmp/"
 
 #LOGGING
 ## CREATE LOGGER
@@ -330,8 +330,8 @@ def payloadManifest(dedupe_key,meta):
                 "correlation_id": dedupe_key,
                 "contact_type": "monitoring",
                 "state": state,
-                "close_code":"Closed/Resolved by Caller",
-                "close_notes":"Monitoring Service Recovery",
+                "resolution_code":"Resolved by Caller",
+                "resolution_notes":"Monitoring Recovery",
                 "category": "hardware",
                 "subcategory": "Server",
                 "business_service":"Business Service",
@@ -358,8 +358,8 @@ def payloadManifest(dedupe_key,meta):
                 "correlation_id": dedupe_key,
                 "contact_type": "monitoring",
                 "state": state,
-                "close_code":"Closed/Resolved by Caller",
-                "close_notes":"SERVICE HAS STOPPED FLAPPING",
+                "resolution_code":"Resolved by Caller",
+                "resolution_notes":"Monitoring Recovery",
                 "category": "hardware",
                 "subcategory": "Server",
                 "business_service":"Business Service",
@@ -452,8 +452,8 @@ def payloadManifest(dedupe_key,meta):
                 "correlation_id": dedupe_key,
                 "contact_type": "monitoring",
                 "state": state,
-                "close_code":"Closed/Resolved by Caller",
-                "close_notes":"Monitoring Service Recovery",
+                "resolution_code":"Resolved by Caller",
+                "resolution_notes":"Monitoring Recovery",
                 "category": "software",
                 "subcategory": "Performance",
                 "service":"Business Service",
@@ -483,6 +483,8 @@ def payloadManifest(dedupe_key,meta):
                 "state": state,
                 "close_code":"Closed/Resolved by Caller",
                 "close_notes":"SERVICE HAS TOPPED FLAPPING",
+                "Resolution_code":"Resolved By Caller",
+                "Resolution_notes":"Monitoring Recovery",
                 "category": "software",
                 "subcategory": "Performance",
                 "service":"Business Service",
@@ -967,7 +969,7 @@ if __name__ == "__main__" :
         "--lasttimecritical",
         required=False,
         default=None,
-        help="Timestamp(lasttimeceitical): The last time that the service/host was in the critical state."
+        help="Timestamp(lasttimecritical): The last time that the service/host was in the critical state."
     )
     event.add_argument(
         "--servicestatetype",
@@ -1023,13 +1025,7 @@ if __name__ == "__main__" :
         default=None,
         help="String($SERICENOTES$/$HOSTNOTES$): The notes that are associated to the service/host in nagios."
     )
-    #TODO REMOVE ACK INPUT
-    event.add_argument(
-        "--ack",
-        required=False,
-        default=None,
-        help="String($SERICEACKCOMMENT$/$HOSTACKCOMMENT$): The incidentID from service now that relates to the problem."
-    )
+    
     event.add_argument(
         "--debug",
         action="store_true",
@@ -1092,9 +1088,7 @@ if __name__ == "__main__" :
         elif meta.etype in recoveryList:
             #SEND UPDATE EVENT
             resolve = handleEvent(meta)
-            #TODO Prod testing
             #logger.info(resolve.text)
-            logger.info(meta)
             logger.info("SERVICENOW INCIDENT RESOLUTION SENT")
         
         else:
